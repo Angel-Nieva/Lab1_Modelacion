@@ -114,7 +114,7 @@ Y = F1 + F2 + r3
 % Gráfico de la respuesta del escalón
 figure();
 step(Y)
-title('Ec 2 respuesta del diagrama de bloques');
+title('Respuesta del diagrama de bloques');
 ylabel("Amplitud (Y(s))");
 xlabel("Tiempo (t)");
 grid on
