@@ -116,7 +116,7 @@ figure();
 step(Y)
 title('Respuesta del diagrama de bloques');
 ylabel("Amplitud (Y(s))");
-xlabel("Tiempo (t)");
+xlabel("Tiempo");
 grid on
 
 
