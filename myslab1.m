@@ -12,7 +12,9 @@ H1 = 4*s/(3*s+1)
 % Repsuesta al escalón del lazo abierto
 figure();
 step(H1)
-title('Ec 1 respuesta lazo abierto')
+title('Ec. 1 respuesta lazo abierto')
+ylabel("Amplitud (Y(s))");
+xlabel("Tiempo (t)");
 grid on
 stepAbierto1 = step(H1);
 
@@ -32,7 +34,9 @@ cerrado1 = feedback(H1,1)
 figure();
 step(cerrado1)
 stepCerrado1 = step(cerrado1);
-title('Ec 1 respuesta lazo cerrado');
+title('Ec. 1 respuesta lazo cerrado');
+ylabel("Amplitud (Y(s))");
+xlabel("Tiempo (t)");
 grid on
 
 
@@ -55,7 +59,9 @@ H2 = (5*s^2+7*s+1)/(s^2+6*s+3)
 figure();
 step(H2)
 stepAbierto2 = step(H2);
-title('Ec 2 rerspuesta lazo abierto');
+title('Ec. 2 rerspuesta lazo abierto');
+ylabel("Amplitud (Y(s))");
+xlabel("Tiempo (t)");
 grid on
 
 % Polos y ceros de la función 2
@@ -72,7 +78,9 @@ cerrado2 = feedback(H2,1)
 figure();
 step(cerrado2)
 stepCerrado2 = step(cerrado2);
-title('Ec 2 rerspuesta lazo cerrado');
+title('Ec. 2 rerspuesta lazo cerrado');
+ylabel("Amplitud (Y(s))");
+xlabel("Tiempo (t)");
 grid on
 
 % Polos y ceros del lazo cerrado
@@ -81,6 +89,34 @@ cerosCerrado2 = zero(cerrado2)
 K_Cerrado2 = dcgain(cerrado2)
 T_Cerrado2 = stepinfo(stepCerrado2).SettlingTime
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%         PREGUNTA 2        %%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Definicíon de parámetro s
+s = tf('s');
 
+% Definicion de cada funcion de transferencia
+F1 = (4*s)/(10*s^2 + 4);
+F2 = 3/(6*s + 16);
+F3 = (4*s + 10)/(4*s^3 + 9*s^2 + 5*s);
+F4 = 1/(7*s + 10);
+F5 = (8*s + 8)/(s^3 + 2*s^2 + 3*s);
+F6 = (3*s + 2)/(5*s^2 + 7*s + 10);
+
+% Desarrollo de respuesta del escalón
+r1 = feedback (F3,1,1); %En este caso: feedback (Funcion 3, vacio, retroalimentación positiva)
+r2 = (F4+F5)*r1
+r3 = F6 * r2;
+
+% Solución de la respuesta del escalón
+Y = F1 + F2 + r3
+
+% Gráfico de la respuesta del escalón
+figure();
+step(Y)
+title('Ec 2 respuesta del diagrama de bloques');
+ylabel("Amplitud (Y(s))");
+xlabel("Tiempo (t)");
+grid on
 
 
