@@ -26,4 +26,9 @@ r3 = F6 * r2;
 Y = F1 + F2 + r3
 
 % Gráfico de la respuesta del escalón
+figure();
 step(Y)
+title('Ec 2 respuesta del diagrama de bloques');
+ylabel("Amplitud (Y(s))");
+xlabel("Tiempo");
+grid on
